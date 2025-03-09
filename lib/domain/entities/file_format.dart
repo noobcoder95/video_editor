@@ -37,8 +37,7 @@ abstract class FileFormat {
 /// VideoExportFormat('mkv');
 /// ```
 class VideoExportFormat extends FileFormat {
-  const VideoExportFormat(String extension, {required String mimeType})
-      : super(extension, mimeType: mimeType);
+  const VideoExportFormat(super.extension, {required super.mimeType});
 
   static const avi = VideoExportFormat('avi', mimeType: 'video/x-msvideo');
   static const gif = GifExportFormat();
@@ -65,8 +64,7 @@ class GifExportFormat extends VideoExportFormat {
 /// CoverExportFormat('jpeg');
 /// ```
 class CoverExportFormat extends FileFormat {
-  const CoverExportFormat(String extension, {required String mimeType})
-      : super(extension, mimeType: mimeType);
+  const CoverExportFormat(super.extension, {required super.mimeType});
 
   static const jpg = CoverExportFormat('jpg', mimeType: 'image/jpeg');
   static const png = CoverExportFormat('png', mimeType: 'image/png');

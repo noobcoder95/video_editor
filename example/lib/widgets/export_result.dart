@@ -40,7 +40,7 @@ class _VideoResultPopupState extends State<VideoResultPopup> {
 
     if (!_isGif) {
       _controller = kIsWeb
-          ? VideoPlayerController.network(widget.video.path)
+          ? VideoPlayerController.networkUrl(Uri.parse(widget.video.path))
           : VideoPlayerController.file(File(widget.video.path))
         ..initialize().then((_) {
           _fileDimension = _controller!.value.size;
@@ -188,7 +188,7 @@ class FileDescription extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width - 60,
         padding: const EdgeInsets.all(10),
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.black.withValues(alpha: 0.5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: description.entries
@@ -204,7 +204,7 @@ class FileDescription extends StatelessWidget {
                         text: entry.value,
                         style: TextStyle(
                           fontSize: 10,
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                         ),
                       ),
                     ],

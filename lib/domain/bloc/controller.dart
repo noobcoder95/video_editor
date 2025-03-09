@@ -87,14 +87,14 @@ class VideoEditorController extends ChangeNotifier {
     TrimSliderStyle? trimStyle,
     this.defaultCoverThumbnailQuality = 10,
   })  : _video = kIsWeb
-            ? VideoPlayerController.network(file.path)
+            ? VideoPlayerController.networkUrl(Uri.parse(file.path))
             : VideoPlayerController.file(
                 File(
                   // https://github.com/flutter/flutter/issues/40429#issuecomment-549746165
                   Platform.isIOS ? Uri.encodeFull(file.path) : file.path,
                 ),
               ),
-        trimStyle = trimStyle ?? TrimSliderStyle(),
+        trimStyle = trimStyle ?? const TrimSliderStyle(),
         assert(maxDuration > minDuration,
             'The maximum duration must be bigger than the minimum duration'),
         assert(
